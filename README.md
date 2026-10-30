@@ -1,89 +1,57 @@
-# Private Communication Protocol (PCP)
+# PCP Protocol v0.1 Specifications
 
-**Open by design. Secure by mathematics.**
+**Status:** Draft  
+**Version:** 0.1.0-draft  
+**Purpose:** Index of the language-independent PCP v0.1 specification documents.
 
-PCP is an independent, open-source, language-independent communication protocol focused on secure communication, cryptographic metadata protection, and privacy-preserving network transport.
+These documents describe the intended architecture, responsibilities, requirements, and open design questions for the Private Communication Protocol (PCP).
 
-The project aims to provide reusable protocol specifications and reference implementations that developers can independently adopt, implement, operate, and extend.
+> **Draft warning:** These documents are not a finalized protocol standard. Any field layout, algorithm, handshake, identifier format, or wire behavior described as proposed or illustrative is not normative. Security-sensitive choices require explicit evaluation, review, and test vectors before implementation.
 
-PCP is designed as protocol infrastructure, not as a centralized messaging service.
+## Documents
 
-## Project Objectives
-
-- Establish interoperable standards for secure communication.
-- Provide authenticated end-to-end encryption.
-- Minimize unnecessary communication metadata exposure.
-- Support privacy-preserving and transport-independent networking.
-- Enable independent implementations across programming languages.
-- Encourage open development and independent security reviews.
-
-## Protocol Specifications
-
-The current specification is under development.
-
-| Document | Description |
+| Document | Purpose |
 |---|---|
-| [PCP v0.1 Overview](protocol/v0.1/overview.md) | Protocol purpose, scope, objectives, and design principles |
-| Architecture | Planned component architecture |
-| Identity | Planned device identity and authentication specification |
-| Session Establishment | Planned secure session and key lifecycle specification |
-| Message Envelope | Planned message structure and serialization |
-| Transport | Planned transport and relay interfaces |
-| Security Requirements | Planned security requirements and threat model |
-| Privacy Model | Planned metadata privacy requirements |
-| Versioning | Planned protocol evolution and compatibility rules |
+| [Overview](overview.md) | Project goals, scope, and design principles |
+| [Architecture](architecture.md) | Components, boundaries, and data flow |
+| [Identity](identity.md) | Cryptographic identities, keys, and identity lifecycle |
+| [Session Establishment](session-establishment.md) | Requirements for authenticated session setup |
+| [Message Envelope](message-envelope.md) | Logical message structure and processing requirements |
+| [Transport](transport.md) | Transport abstraction and network requirements |
+| [Delivery and Relay](delivery-and-relay.md) | Optional relay, queueing, and delivery responsibilities |
+| [Security Model](security-model.md) | Assets, adversaries, threats, and security requirements |
+| [Privacy Model](privacy-model.md) | Metadata, observability, and privacy limitations |
+| [Versioning and Interoperability](versioning-and-interoperability.md) | Compatibility, negotiation, and implementation conformance |
 
-## Repository Structure
+## Normative language
 
-```text
-pcp-specifications/
-├── README.md
-├── protocol/
-│   └── v0.1/
-│       └── overview.md
-├── decisions/
-└── test-vectors/
-```
+The terms **MUST**, **MUST NOT**, **SHOULD**, **SHOULD NOT**, and **MAY** are intended to have their usual standards-document meanings. In this draft, they express proposed requirements unless a section is explicitly marked normative in a future stable release.
 
-## Design Principles
+## Current design status
 
-- Open specifications and transparent implementations.
-- Established cryptographic protocols rather than custom cryptography.
-- End-to-end security.
-- Metadata minimization.
-- Modular and transport-independent architecture.
-- Independent deployment.
-- Cross-language interoperability.
+PCP is intended to be:
 
-## Implementation Strategy
+- Language-independent at the specification layer.
+- Implementable in multiple languages.
+- Modular across cryptography, identity, message handling, and transport.
+- Usable with independently operated infrastructure.
+- Designed to minimize unnecessary metadata exposure.
+- Based on established cryptographic protocols and reviewed implementations.
 
-PCP is language-independent.
+The first reference implementation is planned in Python. That implementation choice does not define the protocol.
 
-The first reference implementation is planned in Python. Future implementations may use Rust and other languages while following the same protocol specifications and interoperability requirements.
+## Open decisions
 
-Implementation details must not define or restrict protocol compatibility.
+The following are deliberately not finalized here:
 
-## Development Status
+- Exact identity and public-key encoding.
+- Exact authenticated key agreement and session protocol.
+- Ratchet and key lifecycle details.
+- Cipher suite and cryptographic library selection.
+- Canonical serialization and binary wire encoding.
+- Message identifier and replay-window formats.
+- Relay discovery, routing, and mailbox protocol.
+- Padding, batching, cover traffic, and traffic-analysis defenses.
+- Formal conformance and test-vector format.
 
-<PRIVATE_STATUS>
-
-PCP v0.1 is currently in the specification and design stage. Protocol definitions, security requirements, and interoperability rules are being established before implementation begins.
-
-</PRIVATE_STATUS>
-
-## Project Resources
-
-- **Website:** https://private-communication-protocol.github.io/
-- **GitHub Organization:** https://github.com/Private-Communication-Protocol
-- **Protocol Specifications:** https://github.com/Private-Communication-Protocol/pcp-specifications
-
-## Contributing
-
-Contributions, technical discussions, architectural reviews, and security feedback are welcome.
-
-Contribution guidelines and vulnerability reporting procedures will be added as the project develops.
-
----
-
-**Private Communication Protocol**  
-*Independent. Open Source. Privacy First.*
+These decisions should be recorded separately with rationale and review status.
